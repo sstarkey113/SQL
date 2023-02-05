@@ -1,3 +1,3 @@
-## **Samantha Starkey's SQL Portfollio**
+## Samantha Starkey's SQL Portfollio
 
-## Welcome to my SQL portfollio! Here you will find examples of SQL I've written. Feel free to take a look and reach out with any questions. Enjoy!
+### Welcome to my SQL portfollio! Here you will find examples of SQL I've written. Feel free to take a look and reach out with any questions. Enjoy!
