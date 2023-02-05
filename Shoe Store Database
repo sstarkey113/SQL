@@ -1,0 +1,26 @@
+--Create a database for the shoe store
+
+CREATE TABLE SHOES (id integer primary key, style text, gender text, color text, sold integer, price integer);
+
+INSERT INTO SHOES VALUES
+(1, "Running shoes", "mens", "blue",5,90),
+(2, "Running shoes", "womens", "white",3,90),
+(3, "Sandals", "mens", "brown",3,35),
+(4, "Sandals", "womens", "brown",5,30),
+(5, "boots", "womens", "black",9,50),
+(6, "boots", "mens", "brown",10,55),
+(7, "flip flops", "womens", "black",12,15),
+(8, "Kids shoes", "boys", "red",3,60),
+(9, "Kids shoes", "girls", "blue",5,60),
+(10, "water shoes", "womens", "blue",3,35),
+(11, "water shoes", "mens", "black",5,35),
+(12, "water shoes", "girls", "purple",4,35),
+(13, "water shoes", "boys", "blue",3,35),
+(14, "rain boots", "girls", "blue",2,40),
+(15, "rain boots", "boys", "yellow",1,40);
+
+--Display the database ordered by price.
+SELECT * FROM SHOES ORDER by price;
+
+--How many total shoes were sold?
+SELECT SUM (sold) from shoes;
