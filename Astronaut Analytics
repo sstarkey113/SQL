@@ -1,0 +1,34 @@
+# In this SQL code, I'm querying a database with data on NASA_Astronauts
+
+1)How many astronuats are there in the database?
+SELECT COUNT(*) FROM astronauts;
+
+2) How many astronauts in this database obtained at least 1 hour of space flight?
+SELECT COUNT(NAME) AS Astrounauts_In_Space FROM astronauts
+WHERE Space_FLight_hr >1;
+
+3) How many astronuats in this database obtained at least 1 hour of space flight and at least 1 hour of space walk time?
+SELECT COUNT(Name) FROM astronauts
+WHERE Space_Flight_hr >1
+AND Space_Walks_hr >1;
+
+4) Which astronaut had the most space flight time?
+SELECT Name, MAX(Space_Flight_hr) AS Most_Flight_Time FROM astronauts;
+
+5) Which astronauts took part in any Apollo Mision?
+SELECT Name FROM astronauts
+WHERE Missions LIKE'%Apollo%';
+
+6) Which astronauts were around for the race to land on the moon?
+SELECT Name FROM astronauts
+GROUP BY Name
+HAVING Year >1958
+AND Year <1975;
+
+7) How many female astronauts have there been?
+SELECT Count(Name) AS Women_Astronauts FROM astronauts
+WHERE Gender = 'Female';
+
+
+
+
