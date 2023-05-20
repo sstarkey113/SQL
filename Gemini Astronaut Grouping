@@ -1,0 +1,54 @@
+/* TASK: Create table(s) of a group of famous people and what they do */
+
+
+CREATE TABLE astronauts (id INTEGER PRIMARY KEY, name TEXT, birth_year INTEGER, miltary_branch TEXT);
+
+INSERT INTO astronauts VALUES (1, "Neil Armstrong", 1930, "navy");
+INSERT INTO astronauts VALUES (2, "Buzz Aldrin", 1930, "Air force");
+INSERT INTO astronauts VALUES (3, "Michael Collins", 1930, "Air force");
+INSERT INTO astronauts VALUES (4, "David Scott", 1932, "Air force");
+INSERT INTO astronauts VALUES (5, "John Young", 1930, "navy");
+INSERT INTO astronauts VALUES (6, "Jim Lovell", 1928, "navy");
+INSERT INTO astronauts VALUES (7, "Pete Conrad", 1930, "navy");
+INSERT INTO astronauts VALUES (8, "Richard Gordon", 1929, "navy");
+INSERT INTO astronauts VALUES (9, "Thomas Stafford", 1930, "Air force");
+INSERT INTO astronauts VALUES (10, "Gene Cernan", 1934, "navy");
+INSERT INTO astronauts VALUES (11, "Frank Borman", 1928, "Air force");
+INSERT INTO astronauts VALUES (12, "Waler Schirra", 1923, "navy");
+INSERT INTO astronauts VALUES (13, "Gorden Copper", 1927, "Air force");
+INSERT INTO astronauts VALUES (14, "James McDivitt", 1929, "Air force");
+INSERT INTO astronauts VALUES (15, "Ed White", 1930, "Air force");
+INSERT INTO astronauts VALUES (16, "Gus Grissom", 1926, "Air force");
+
+CREATE TABLE Gemini (ID INTEGER PRIMARY KEY, mission TEXT, astronaut_id INTEGER, partner_id INTEGER); 
+
+INSERT INTO Gemini VALUES (1, "Gemini 3", 16, 5);
+INSERT INTO Gemini VALUES (2, "Gemini 4", 14, 15);
+INSERT INTO Gemini VALUES (3, "Gemini 5", 13, 7);
+INSERT INTO Gemini VALUES (4, "Gemini 6", 12, 9);
+INSERT INTO Gemini VALUES (5, "Gemini 7", 11, 6);
+INSERT INTO Gemini VALUES (6, "Gemini 8", 1, 4);
+INSERT INTO Gemini VALUES (7, "Gemini 9", 9, 10);
+INSERT INTO Gemini VALUES (8, "Gemini 10", 5, 3);
+INSERT INTO Gemini VALUES (9, "Gemini 11", 7, 8);
+INSERT INTO Gemini VALUES (10, "Gemini 12", 6, 2);
+
+/*Create queries about the group of people, making sure to use the JOIN function in atleast one to connect tables and people*/
+
+#1: Used join to connect tables to determine which astronuats were partnered up for which mission.
+
+SELECT mission, a.name, b.name  FROM Gemini
+JOIN astronauts a
+ON Gemini.astronaut_id = a.id
+JOiN astronauts b
+ON Gemini.partner_id = b.id;
+
+#2: Ordered the astronuats by birth year, oldest to youngest.
+
+SELECT name, birth_year FROM astronauts
+ORDER BY birth_year asc;
+
+#3: Made a count of how many astronuats were in which miltary branches. 
+
+SELECT COUNT(name) AS total_astronauts, miltary_branch FROM astronauts
+GROUP BY miltary_branch
