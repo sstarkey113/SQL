@@ -1,0 +1,54 @@
+# For this project, I downloaded Spotify data from Kaggle.
+# Then I created a table to insert Spotify data into.
+# Finally, I performed analytics on the data using SQL. 
+
+#Creating the table: 
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+#Then I inserted the Spotify Data .csv into the table.
+#Next, I explored the data using the following SQL, creating questions and then creating queries to solve them.
+
+1) What were the top 5 songs and artisit based off popularity?
+
+SELECT artist_name, track_name, popularity
+FROM BIT_DB.Spotifydata
+ORDER BY popularity desc LIMIT 5;
+
+2) On average who was the top artist based off popularity of songs and what was there dancability avg?
+
+SELECT AVG(popularity), AVG(danceability), artist_name 
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY AVG(popularity) desc LIMIT 1;
+
+3)Determine which songs had a duration time of 4 minutes or longer.
+
+SELECT track_name, duration_ms/60000 AS duration_minutes 
+FROM BIT_DB.Spotifydata
+WHERE duration_minutes >=4;
+
+4)What was Olivia Rodrigos most popular song and what was the dancability and energy of that track?
+
+SELECT artist_name, track_name, popularity, danceability, energy
+FROM BIT_DB.Spotifydata
+WHERE artist_name = 'Olivia Rodrigo'
+ORDER BY popularity desc LIMIT 1;
