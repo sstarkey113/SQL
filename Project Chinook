@@ -32,11 +32,20 @@ FROM chinook.customers AS customers
 JOIN chinook.employees AS employees
 ON customers.SupportRepId = employees.EmployeeId;
 
-6)What is total for all of the invoices.
+6)How many sales did each sale representative make?
+
+SELECT employees.FirstName, employees.LastName, COUNT(employees.EmployeeId)
+FROM chinook.customers AS customers
+JOIN chinook.employees AS employees
+ON customers.SupportRepId = employees.EmployeeId
+GROUP BY employees.LastName
+
+7)What is total for all of the invoices.
 
 SELECT SUM(Total) FROM chinook.invoices
 
-7)Write a query to the show the track name that was purchased with the invoice information.
+8)Write a query to the show the track name that was purchased with the invoice information.
+
 SELECT items.TrackId, items.InvoiceLineId, items.InvoiceId, items.Quantity, items.UnitPrice, items.InvoiceId, tracks.Name 
 FROM chinook.invoice_items AS items
 JOIN chinook.tracks AS tracks
