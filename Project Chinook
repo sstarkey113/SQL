@@ -1,0 +1,43 @@
+
+#In this SQL, I'm querying a database that I downloaded with multiple tables in it to create my own questions that I would like to retrieve from the data. 
+
+
+1) How many employees are there? Make a table of all employees in alphabetical order, including full name and job title.
+
+SELECT COUNT(*) FROM chinook.employees;
+
+SELECT LastName, FirstName, Title 
+FROM chinook.employees
+ORDER BY LastName asc;
+
+2) Create a unique/distinct list of countries that our customers are ordering from.
+
+SELECT DISTINCT Country FROM chinook.customers;
+
+3) Show only customers in the USA and include what city they are in.
+SELECT FirstName, LastName, Country, City 
+FROM chinook.customers
+WHERE Country = 'USA'
+ORDER BY City;
+
+4)Using the JOIN query, combine the employee table and customer table to show which sales representative helped which customers.
+SELECT customers.FirstName, customers.LastName, employees.LastName AS Sales_Rep
+FROM chinook.customers AS customers
+JOIN chinook.employees AS employees
+ON customers.SupportRepId = employees.EmployeeId
+
+5) Which sales representative made the most sales? 
+SELECT employees.FirstName, employees.LastName, MAX(employees.EmployeeId)
+FROM chinook.customers AS customers
+JOIN chinook.employees AS employees
+ON customers.SupportRepId = employees.EmployeeId;
+
+6)What is total for all of the invoices.
+
+SELECT SUM(Total) FROM chinook.invoices
+
+7)Write a query to the show the track name that was purchased with the invoice information.
+SELECT items.TrackId, items.InvoiceLineId, items.InvoiceId, items.Quantity, items.UnitPrice, items.InvoiceId, tracks.Name 
+FROM chinook.invoice_items AS items
+JOIN chinook.tracks AS tracks
+ON items.TrackId = tracks.TrackId
